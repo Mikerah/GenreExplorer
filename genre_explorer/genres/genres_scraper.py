@@ -59,7 +59,9 @@ def create_genres_dictionary(list_of_genres):
     for genre in list_of_genres:
         if genre[0] in genres:
             genres[genre[0]].append(genre)
+            sort(genres[genre[0]])
         else:
             genres["#"].append(genre)
+            sort(genres["#"])
             
     return genres
