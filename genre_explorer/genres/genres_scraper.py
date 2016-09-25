@@ -1,6 +1,6 @@
 import bs4, requests, string
 
-def get_links_to_sections_of_genres():
+def _get_links_to_sections_of_genres():
     """
     Returns a list of links to the different sections of genres in wikipedia
     """
@@ -20,11 +20,12 @@ def get_links_to_sections_of_genres():
     return links
    
 
-def get_list_of_genre_from_links(links):
+def _get_list_of_genre_from_links():
     """
     Returns the list of genres from the given list of links
     :params links - list
     """
+    links = get_links_to_sections_of_genres()
     g = []
     for i in links:
         wiki_genres_page = requests.get(i)
@@ -46,12 +47,13 @@ def get_list_of_genre_from_links(links):
         
     return g
     
-def create_genres_dictionary(list_of_genres):
+def create_genres_dictionary():
     """
     Returns a dictionary of genres where the keys are the alphabet and the values
     a list of genres
     :params list_of_genres - list
     """
+    list_of_genres = _get_list_of_genre_from_links()
     list_of_letters = list(string.ascii_uppercase)
     list_of_letters.append("#")
     genres = {k: [] for k in list_of_letters}
