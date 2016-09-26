@@ -1,3 +1,3 @@
 /ge_env
 *.bak
-/genres/*.bak
+*.pyc
