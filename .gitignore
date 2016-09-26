@@ -1,4 +1,4 @@
 /ge_env
 *.bak
 *.pyc
-genre_explorer/__pycache__
+/genre_explorer/__pycache__
