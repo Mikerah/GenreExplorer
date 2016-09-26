@@ -9,7 +9,11 @@
         <meta name="description" content="Find Examples of the World's music genres">
     </head>
     <body>
-    
+        <ul>
+            {% for letter in letters %}
+                <li><a href="#{{letter}}">{{letter}}</a></li>
+            {% endfor %}
+        </ul>
         <footer>
             <a href="https://github.com/Mikerah/GenreExplorer">View Source on Github</a>
         </footer>
