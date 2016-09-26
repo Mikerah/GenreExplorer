@@ -1,4 +1,4 @@
-import bs4, requests, string
+import bs4, requests, string, re
 
 def _get_links_to_sections_of_genres():
     """
@@ -25,7 +25,7 @@ def _get_list_of_genre_from_links():
     Returns the list of genres from the given list of links
     :params links - list
     """
-    links = get_links_to_sections_of_genres()
+    links = _get_links_to_sections_of_genres()
     g = []
     for i in links:
         wiki_genres_page = requests.get(i)
@@ -59,11 +59,13 @@ def create_genres_dictionary():
     genres = {k: [] for k in list_of_letters}
     
     for genre in list_of_genres:
+        if 'Sections' in genre or 'Section' in genre:
+            list_of_genres.remove(genre)
         if genre[0] in genres:
             genres[genre[0]].append(genre)
-            sort(genres[genre[0]])
+            sorted(genres[genre[0]])
         else:
             genres["#"].append(genre)
-            sort(genres["#"])
+            sorted(genres["#"])
             
     return genres
