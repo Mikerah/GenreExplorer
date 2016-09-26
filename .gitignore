@@ -1,3 +1,4 @@
 /ge_env
 *.bak
 *.pyc
+/__pycache__
