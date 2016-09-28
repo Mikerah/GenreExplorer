@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from .genres_playlist import create_genres_from_dictionary
-from string import ascii_uppercase
+from .constants import LIST_OF_LETTERS
 
 def index(request):
-    genres = create_genres_from_dictionary()
-    list_of_letters = list(ascii_uppercase)
+    #genres = create_genres_from_dictionary()
     
-    return render(request, 'genres/index.html', {'genres': genres, 'letters': list_of_letters})
+    #return render(request, 'genres/index.html', {'genres': genres, 'letters': list_of_letters})
+    return render(request, 'genres/index.html', {'letters': LIST_OF_LETTERS})

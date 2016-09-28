@@ -26,22 +26,20 @@ def create_genres_from_dictionary():
             for result in search_response.get("items", []):
                 playlist_id = str(result["id"]["playlistId"])
                 
-                playlist_response = youtube.playlistItems().list(
-                    part="Snippet",
-                    playlistId=playlist_id,
-                    maxResults=1
+                playlist_response = youtube.playlists().list(
+                part="player",
+                id=playlist_id,
+                maxResults=1
                 ).execute()
-                
-                for video_res in playlist_response.get('items', []):
+                for playlist_res in playlist_response.get("items", []):
                     genre = Genre(
-                        name = j,
-                        playlist_url = "http://www.youtube.com/watch?v=" \
-                                        + str(video_res["snippet"]["resourceId"]["videoId"]) + "&list=" \
-                                        + playlist_id
+                        name=j,
+                        playlist_embed_tag=playlist_res["player"],
+                        playlist_url="None"
                     )
                     list_of_genres.append(genre)
-    
-    sorted(list_of_genres)
+                
+    list_of_genres.sort(key=lambda x: x.name, reverse=True)
     return list_of_genres
 if __name__ == '__main__':
         create_genres_from_dictionary()

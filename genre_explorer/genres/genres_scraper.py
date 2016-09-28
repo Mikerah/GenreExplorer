@@ -1,4 +1,5 @@
 import bs4, requests, string, re
+from .constants import LIST_OF_LETTERS
 
 def _get_links_to_sections_of_genres():
     """
@@ -54,18 +55,17 @@ def create_genres_dictionary():
     :params list_of_genres - list
     """
     list_of_genres = _get_list_of_genre_from_links()
-    list_of_letters = list(string.ascii_uppercase)
-    list_of_letters.append("#")
-    genres = {k: [] for k in list_of_letters}
+    
+    genres = {k: [] for k in LIST_OF_LETTERS}
     
     for genre in list_of_genres:
         if 'Sections' in genre or 'Section' in genre:
             list_of_genres.remove(genre)
         if genre[0] in genres:
             genres[genre[0]].append(genre)
-            sorted(genres[genre[0]])
+            genres[genre[0]].sort()
         else:
             genres["#"].append(genre)
-            sorted(genres["#"])
+            genres["#"].sort()
             
     return genres
