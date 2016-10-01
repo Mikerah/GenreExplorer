@@ -19,14 +19,22 @@
                 </ul>
             </div>
         </nav>
-        
-        
-        
+        <div class="container">
+            {% for letter in letters %}
+                <a id="{{letter}}"><h2>{{letter}}</h2></a>
+                
+                {% for genre in genres %}
+                    <h3>{{genre.name}}</h3>
+                    {{genre.playlist_embed_tag}}
+                {% endfor %}
+                
+            {% endfor %}
+        </div>
         
         
         <div id="wrap">
-        <footer class="footer navbar-fixed-bottom">
-            <div class="container">
+        <footer class="footer pull-right">
+            <div class="container text-right">
                 <a href="https://github.com/Mikerah/GenreExplorer">View Source on Github</a>
             </div>
         </footer>

@@ -12,12 +12,13 @@ def create_genres_from_dictionary():
     
     dict_of_genre = create_genres_dictionary()
     list_of_genres = []
-    for i in sorted(dict_of_genre.keys()):
+    dict_keys = sorted(dict_of_genre.keys())
+    for i in dict_keys:
         tmp = dict_of_genre[i]
         for j in tmp:
             search_response = youtube.search().list(
                 q=j,
-                part="id",
+                part="snippet",
                 type="playlist",
                 maxResults=1
             ).execute()

@@ -67,5 +67,9 @@ def create_genres_dictionary():
         else:
             genres["#"].append(genre)
             genres["#"].sort()
-            
+    
+    
     return genres
+    
+if __name__ == '__main__':
+    lst = create_genres_dictionary()
