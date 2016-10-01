@@ -20,15 +20,13 @@
             </div>
         </nav>
         <div class="container">
-            {% for letter in letters %}
-                <a id="{{letter}}"><h2>{{letter}}</h2></a>
-                
                 {% for genre in genres %}
-                    <h3>{{genre.name}}</h3>
+                    {% ifchanged genre.name.0 %}
+                        <h1 id="{{genre.name.0}}">{{genre.name.0}}</h1>
+                    {% endifchanged %}
+                    <h2>{{genre.name}}</h2>
                     {{genre.playlist_embed_tag}}
                 {% endfor %}
-                
-            {% endfor %}
         </div>
         
         
